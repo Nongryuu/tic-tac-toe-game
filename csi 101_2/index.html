@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Gobblet Gobblers Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>⚔️ Gobblet Gobblers Tic Tac Toe</h1>
+
+  <div class="menu">
+    <label>โหมดการเล่น:</label>
+    <select id="mode">
+      <option value="2p">👥 เล่น 2 คน</option>
+      <option value="1p">🤖 เล่นคนเดียว</option>
+    </select>
+
+    <label>ระดับความยาก:</label>
+    <select id="difficulty">
+        <option value="easy">ง่าย</option>
+        <option value="medium">ปานกลาง</option>
+        <option value="hard">ยาก</option>
+        <option value="super">Super Hard 🧠</option>
+    </select>
+
+  </div>
+
+  <div class="game-container">
+    <div id="board" class="board"></div>
+
+    <div class="sidebar">
+      <h2>ผู้เล่น <span id="current-player">X</span></h2>
+
+      <div class="piece-selector">
+        <p>เลือกขนาดหมาก:</p>
+        <button class="piece-btn" data-size="small">เล็ก</button>
+        <button class="piece-btn" data-size="medium">กลาง</button>
+        <button class="piece-btn" data-size="large">ใหญ่</button>
+      </div>
+
+      <div class="piece-counts">
+        <p>เหลือ:</p>
+        <p>เล็ก: <span id="small-left"></span></p>
+        <p>กลาง: <span id="medium-left"></span></p>
+        <p>ใหญ่: <span id="large-left"></span></p>
+      </div>
+
+      <button id="reset">🔄 เริ่มใหม่</button>
+    </div>
+  </div>
+
+  <p id="status">ผู้เล่น สีแดง เริ่มก่อน</p>
+
+  <script src="script.js"></script>
+</body>
+</html>

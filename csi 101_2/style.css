@@ -1,0 +1,205 @@
+/* 🎨 Enhanced UI Style – Modern Game Look */
+
+body {
+  font-family: "Prompt", sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #1b1f3a, #2d3359, #1c1f37);
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffd86b;
+  text-shadow: 0 0 10px rgba(255, 216, 107, 0.7);
+}
+
+/* --- Menu Section --- */
+.menu {
+  margin-top: 10px;
+  padding: 15px;
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+.menu label {
+  margin: 0 8px;
+  font-weight: 500;
+}
+.menu select {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+/* --- Game Layout --- */
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+/* --- Game Board --- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 120px);
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.07);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+
+.cell {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: 0.25s;
+}
+
+.cell:hover {
+  background: rgba(255,255,255,0.22);
+  transform: scale(1.05);
+}
+
+/* --- Pieces --- */
+.piece {
+  border-radius: 50%;
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+
+/* X Pieces */
+.X.small { background: #ff7676; width: 32px; height: 32px; }
+.X.medium { background: #ff4141; width: 60px; height: 60px; }
+.X.large { background: #d40000; width: 85px; height: 85px; }
+
+/* O Pieces */
+.O.small { background: #7aa8ff; width: 32px; height: 32px; }
+.O.medium { background: #4378ff; width: 60px; height: 60px; }
+.O.large { background: #003ec7; width: 85px; height: 85px; }
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 180px;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.sidebar h2 {
+  text-align: center;
+  color: #ffd86b;
+  text-shadow: 0 0 8px rgba(255, 216, 107, 0.6);
+}
+
+/* Piece Selector Buttons */
+.piece-btn {
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.15);
+  transition: 0.25s;
+  color: #fff;
+}
+
+.piece-btn:hover {
+  background: rgba(255,255,255,0.28);
+  transform: scale(1.05);
+}
+
+.piece-btn.selected {
+  background: #ffd453;
+  color: #000;
+  box-shadow: 0 0 12px rgba(255,212,83,0.9);
+}
+
+/* Reset Button */
+#reset {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  background: #ff7b00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#reset:hover {
+  transform: scale(1.05);
+  background: #ffa033;
+}
+
+/* Status Text */
+#status {
+  font-size: 22px;
+  margin-top: 25px;
+  color: #ffe08a;
+  text-shadow: 0 0 8px rgba(255,224,138,0.6);
+}
+
+/* Highlight Selected Move */
+.selected-from {
+  outline: 4px solid #ffe066;
+  animation: blink 0.6s infinite;
+  border-radius: 12px;
+}
+
+#win-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.win-text {
+  font-size: 80px;
+  font-weight: 700;
+  color: #ffd86b;
+  text-shadow: 0 0 25px rgba(255, 200, 0, 0.9);
+  animation: pop 0.4s ease-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes blink {
+  50% { outline-color: #ff9900; }
+}
