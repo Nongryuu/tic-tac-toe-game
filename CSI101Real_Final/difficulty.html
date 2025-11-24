@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เลือกระดับความยาก</title>
+  <style>
+    body{font-family:'Orbitron','Inter',system-ui,sans-serif;background:radial-gradient(1200px 600px at 10% 10%, rgba(122,252,255,0.04), transparent),linear-gradient(180deg,#06080b,#0f1220);color:#e6eefb;text-align:center;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;margin:0;padding:0}
+    h1{font-size:36px;margin-bottom:32px;letter-spacing:1px;color:#ff6b6b;text-shadow:0 6px 18px rgba(255,107,107,0.06)}
+    .btn{display:block;margin:12px auto;padding:14px 22px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);cursor:pointer;width:260px;font-size:18px;font-weight:600;transition:all 0.2s cubic-bezier(.2,.9,.3,1);box-shadow:0 10px 30px rgba(2,8,20,0.6)}
+    .easy{background:linear-gradient(90deg,#3dd37a,#2bb64f);color:#061226}
+    .medium{background:linear-gradient(90deg,#ffb300,#ff9500);color:#061226}
+    .hard{background:linear-gradient(90deg,#ff7d4d,#ff5722);color:#fff}
+    .super{background:linear-gradient(90deg,#b366ff,#8c27b0);color:#fff}
+    .back{background:linear-gradient(90deg,#7afcff,#5eb8d6);color:#061226;margin-top:20px}
+    .btn:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(2,8,20,0.8)}
+  </style>
+</head>
+<body>
+  <h1>เลือกระดับความยาก</h1>
+  <button class="btn easy" onclick="choose('easy')">ง่าย</button>
+  <button class="btn medium" onclick="choose('medium')">ปานกลาง</button>
+  <button class="btn hard" onclick="choose('hard')">ยาก</button>
+  <button class="btn super" onclick="choose('super')">Super Hard 🧠</button>
+  <button class="btn back" onclick="window.location.href='งาน.html'">ย้อนกลับ</button>
+
+  <script>
+    // อ่านค่าผู้เล่นจาก query parameter
+    const params = new URLSearchParams(window.location.search);
+    const player = params.get('player') || 'P1';
+    
+    // ฟังก์ชันเลือกระดับความยาก
+    function choose(diff){
+      // ส่งไปหน้าเล่นพร้อมพารามิเตอร์: โหมด 1 คน + ระดับ + ผู้เล่นเริ่ม
+      window.location.href = `index.html?mode=1p&difficulty=${diff}&player=${player}`;
+    }
+  </script>
+</body>
+</html>
