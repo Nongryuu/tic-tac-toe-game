@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เลือกระดับความยาก</title>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       INLINE CSS - DIFFICULTY SELECTION PAGE STYLING
+       ═══════════════════════════════════════════════════════════════════════════
+       This page uses inline styles for simplicity
+       Users select AI difficulty before starting single-player game
+  -->
+  
+  <style>
+    /* ───────────────────────────────────────────────────────────────────────
+       PAGE BODY
+       ───────────────────────────────────────────────────────────────────────
+    */
+    body {
+      /* Typography and font setup */
+      font-family: 'Orbitron', 'Inter', system-ui, sans-serif;
+      
+      /* Dark neon background matching menu/game aesthetic */
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(122,252,255,0.04), transparent),
+                  linear-gradient(180deg, #06080b, #0f1220);
+      
+      color: #e6eefb;
+      text-align: center;
+      min-height: 100vh;
+      
+      /* Center content */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ───────────────────────────────────────────────────────────────────────
+       PAGE HEADING
+       ───────────────────────────────────────────────────────────────────────
+    */
+    h1 {
+      font-size: 36px;
+      margin-bottom: 32px;
+      letter-spacing: 1px;
+      color: #ff6b6b;           /* Red neon */
+      text-shadow: 0 6px 18px rgba(255,107,107,0.06);
+    }
+
+    /* ───────────────────────────────────────────────────────────────────────
+       BASE BUTTON STYLING
+       ───────────────────────────────────────────────────────────────────────
+       Common styles for all difficulty buttons
+    */
+    .btn {
+      display: block;
+      margin: 12px auto;
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.02);
+      cursor: pointer;
+      width: 260px;
+      font-size: 18px;
+      font-weight: 600;
+      
+      /* Smooth animation on hover */
+      transition: all 0.2s cubic-bezier(.2,.9,.3,1);
+      
+      /* Drop shadow */
+      box-shadow: 0 10px 30px rgba(2,8,20,0.6);
+    }
+
+    /* Button hover state: lift and enhance shadow */
+    .btn:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(2,8,20,0.8);
+    }
+
+    /* ───────────────────────────────────────────────────────────────────────
+       DIFFICULTY LEVEL BUTTON COLORS
+       ───────────────────────────────────────────────────────────────────────
+       Each button has distinct color representing difficulty progression
+    */
+
+    /* Easy - Green (easy/friendly) */
+    .easy {
+      background: linear-gradient(90deg, #3dd37a, #2bb64f);
+      color: #061226;
+    }
+
+    /* Medium - Yellow/Orange (caution/moderate) */
+    .medium {
+      background: linear-gradient(90deg, #ffb300, #ff9500);
+      color: #061226;
+    }
+
+    /* Hard - Orange/Red (danger/difficult) */
+    .hard {
+      background: linear-gradient(90deg, #ff7d4d, #ff5722);
+      color: #fff;
+    }
+
+    /* Super Hard - Purple (extreme/challenging) */
+    .super {
+      background: linear-gradient(90deg, #b366ff, #8c27b0);
+      color: #fff;
+    }
+
+    /* ───────────────────────────────────────────────────────────────────────
+       BACK BUTTON
+       ───────────────────────────────────────────────────────────────────────
+       Cyan gradient for navigation (not a difficulty choice)
+    */
+    .back {
+      background: linear-gradient(90deg, #7afcff, #5eb8d6);  /* Cyan */
+      color: #061226;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       PAGE HEADING
+  -->
+  <h1>เลือกระดับความยาก</h1>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       DIFFICULTY SELECTION BUTTONS
+       ═══════════════════════════════════════════════════════════════════════════
+       Four buttons for different AI difficulty levels
+       onclick handler passes difficulty to index.html via query parameter
+  -->
+
+  <!-- EASY: Random AI moves -->
+  <button class="btn easy" onclick="choose('easy')">ง่าย</button>
+
+  <!-- MEDIUM: Looks for wins/blocks, otherwise random -->
+  <button class="btn medium" onclick="choose('medium')">ปานกลาง</button>
+
+  <!-- HARD: Same strategy as medium (same difficulty for now) -->
+  <button class="btn hard" onclick="choose('hard')">ยาก</button>
+
+  <!-- SUPER: Minimax algorithm with alpha-beta pruning -->
+  <button class="btn super" onclick="choose('super')">Super Hard 🧠</button>
+
+  <!-- BACK: Return to main menu -->
+  <button class="btn back" onclick="window.location.href='งาน.html'">ย้อนกลับ</button>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       SCRIPT: HANDLE DIFFICULTY SELECTION
+  -->
+  <script>
+    /**
+     * Read which game mode was selected from URL query parameter
+     * This page is reached from งาน.html?player=P1 if user selected 1-player mode
+     */
+    const params = new URLSearchParams(window.location.search);
+    const player = params.get('player') || 'P1';
+
+    /**
+     * choose(difficulty)
+     * Called when user clicks a difficulty button
+     * 
+     * @param {string} diff - Difficulty level: "easy", "medium", "hard", or "super"
+     * 
+     * Navigates to game page with game configuration:
+     * - mode=1p (single player vs bot)
+     * - difficulty={chosen level}
+     * - player={who picked the difficulty}
+     */
+    function choose(diff) {
+      window.location.href = `index.html?mode=1p&difficulty=${diff}&player=${player}`;
+    }
+  </script>
+</body>
+</html>

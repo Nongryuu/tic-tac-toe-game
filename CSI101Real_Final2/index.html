@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Gobblet Gobblers Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- ฟอนต์สำหรับสไตล์ futuristic / arcade -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>⚔️ Gobblet Gobblers Tic Tac Toe</h1>
+
+  <div class="menu">
+    <p id="game-info" style="margin:0; padding:6px 0; font-weight:600;">กำลังเตรียมเกม...</p>
+  </div>
+
+  <div class="game-container">
+    <div id="board" class="board"></div>
+
+    <div class="sidebar">
+      <h2>ผู้เล่น <span id="current-player">X</span></h2>
+
+      <div class="piece-selector">
+        <p>เลือกขนาดหมาก:</p>
+        <button class="piece-btn" data-size="small">เล็ก</button>
+        <button class="piece-btn" data-size="medium">กลาง</button>
+        <button class="piece-btn" data-size="large">ใหญ่</button>
+      </div>
+
+      <div class="piece-counts">
+        <p>เหลือ:</p>
+        <p>เล็ก: <span id="small-left"></span></p>
+        <p>กลาง: <span id="medium-left"></span></p>
+        <p>ใหญ่: <span id="large-left"></span></p>
+      </div>
+
+      <button id="reset">🔄 เริ่มใหม่</button>
+      <button id="home" onclick="window.location.href='งาน.html'">🏠 กลับหน้าหลัก</button>
+    </div>
+  </div>
+
+  <p id="status">ผู้เล่น สีแดง เริ่มก่อน</p>
+
+  <script src="script.js"></script>
+</body>
+</html>
