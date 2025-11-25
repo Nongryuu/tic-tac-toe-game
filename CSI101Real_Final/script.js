@@ -506,7 +506,7 @@ function minimaxBestMove(bot) {
   const opponent = bot === "O" ? "X" : "O";
   let bestScore = -Infinity, bestMove = null;
   const moves = generateAllMoves(bot);
-  const depthLimit = 4;
+  const depthLimit = 6;
   
   for (let m of moves) {
     applyMove(m, bot);
