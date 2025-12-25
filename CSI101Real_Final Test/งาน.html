@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เมนูเกม XO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="container">
+    <h1>🎮Gobblet Gobblers Tic Tac Toe 🎮</h1>
+    <p class="subtitle">[ SELECT GAME MODE ]</p>
+    <div class="btn-container">
+      <button class="btn p1" onclick="chooseMode('1p')">
+        <span class="btn-icon">🤖</span>
+        <span>เล่นกับบอท</span>
+      </button>
+      <button class="btn p2" onclick="chooseMode('2p')">
+        <span class="btn-icon">👥</span>
+        <span>เล่น 2 คน</span>
+      </button>
+    </div>
+  </div>
+  <footer>© 2025 XO Arcade</footer>
+
+  <script>
+    function chooseMode(mode) {
+      if (mode === '1p') {
+        // ไปหน้าระดับความยากก่อน แล้วค่อยไปเล่น
+        window.location.href = "difficulty.html?player=P1";
+      } else {
+        // เริ่มเล่น 2 คน — เริ่มเป็น Player 2 เพื่อให้ปุ่มที่เลือกสื่อว่าเป็น P2
+        window.location.href = "index.html?mode=2p&player=P2";
+      }
+    }
+  </script>
+</body>
+</html>
